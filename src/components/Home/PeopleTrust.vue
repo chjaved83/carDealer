@@ -4,7 +4,7 @@
       <div class="">
         Why People Trust & Choose
       </div>
-      Car Dearler Automotive
+      Car Dealer Automotive
     </div>
   </div>
 

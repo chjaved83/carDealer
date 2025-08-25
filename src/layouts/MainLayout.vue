@@ -4,7 +4,7 @@
       <div class="text-center bg-royal-blue text-h6 q-py-sm roboto">
         Welcome to Auto Car Dealer
       </div>
-      <div class="container row q-pt-sm bg-white">
+      <div class="container row q-pt-sm bg-white items-center">
         <div class="col-5 col-md-4">
           <q-item>
             <q-item-section avatar>
@@ -31,8 +31,10 @@
             </q-item-section>
           </q-item>
         </div>
-        <div class="col-7 col-md-8 flex items-center justify-between">
-          <q-item v-for="item in items" :key="item">
+        <div class="col-7 col-md-8"
+             :class="$q.screen.gt.sm ? 'flex items-center justify-between' : 'text-right'"
+        >
+          <q-item v-for="item in items" :key="item" class="gt-sm">
             <q-item-section avatar class="gt-md">
               <q-icon :name="item.icon" size="48px"/>
             </q-item-section>
@@ -45,6 +47,13 @@
               </q-item-label>
             </q-item-section>
           </q-item>
+          <q-btn
+            flat
+            icon="menu"
+            color="primary"
+            class="lt-md"
+            size="xl"
+          />
         </div>
 
         <div class="col-12 bg-primary radius-12 q-mt-lg">
@@ -84,6 +93,27 @@
           </q-toolbar>
         </div>
       </div>
+      <div class="banner-section">
+        <div class="container q-pa-lg text-white">
+          <div class="q-pt-xl">
+            <div
+              class="text-weight-bold"
+              :class="$q.screen.gt.sm ? 'text-h1 q-pt-xl' : 'text-h2'"
+            >
+              <div class="q-pt-lg" :class="$q.screen.lt.md ? '' : 'q-mt-xl'">
+                Find my Car
+              </div>
+            </div>
+          </div>
+          <div
+            class="text-h5 text-weight-600 q-pt-md"
+            :class="$q.screen.gt.sm ? 'q-mt-lg' : ''"
+          >
+            Use our search below to find our latest models
+          </div>
+          <BannerSearch/>
+        </div>
+      </div>
     </q-header>
 
     <!-- Main Page Container -->
@@ -93,6 +123,8 @@
   </q-layout>
 </template>
 <script setup>
+import BannerSearch from "components/BannerSearch.vue";
+
 const items = [
   {
     icon: "img:/icons/whatsapp.svg",
@@ -142,6 +174,14 @@ const centerButtons = [
 ]
 </script>
 <style scoped>
+.banner-section {
+  background-image: url('/images/bannerImages.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -32px;
+}
+
 :deep(.q-item__label + .q-item__label) {
   margin-top: 0;
 }

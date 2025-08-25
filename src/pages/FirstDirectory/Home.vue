@@ -1,24 +1,5 @@
 <template>
   <q-page>
-    <div class="banner-section">
-      <div class="container q-pa-lg text-white">
-        <div
-          class="text-weight-bold q-mt-xl"
-          :class="$q.screen.gt.sm ? 'text-h1 q-pt-xl' : 'text-h2'"
-        >
-          <div class="q-pt-lg" :class="$q.screen.lt.md ? '' : 'q-mt-xl'">
-            Find my Car
-          </div>
-        </div>
-        <div
-          class="text-h5 text-weight-600 q-pt-md"
-          :class="$q.screen.gt.sm ? 'q-mt-lg' : ''"
-        >
-          Use our search below to find our latest models
-        </div>
-        <BannerSearch/>
-      </div>
-    </div>
     <div class="row" :class="$q.screen.lt.md ? 'q-px-md' : ''">
       <div class="col-12 text-center q-py-lg q-mt-md">
         <div class="text-primary text-weight-bold text-h4">
@@ -85,11 +66,4 @@ import WelcomeSection from "components/Home/WelcomeSection.vue";
 
 </script>
 <style scoped>
-.banner-section {
-  background-image: url('/images/bannerImages.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-top: -32px;
-}
 </style>
