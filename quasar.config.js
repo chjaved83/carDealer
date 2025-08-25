@@ -12,7 +12,8 @@ export default defineConfig((ctx) => {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-webpack/boot-files
     boot: [
-      'axios'
+      'axios',
+      'resizeObserverFix',
     ],
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-file#css
@@ -37,7 +38,7 @@ export default defineConfig((ctx) => {
     // Full list of options: https://v2.quasar.dev/quasar-cli-webpack/quasar-config-file#build
     build: {
       // publicPath: '/',
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
 
       // webpackTranspile: false,
 

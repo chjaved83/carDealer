@@ -1,1 +1,53 @@
-// app global css in SCSS form
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kulim+Park:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&family=Zen+Dots&display=swap');
+.zen-dot{
+  font-family: "Zen Dots", sans-serif;
+}
+.roboto{
+  font-family: "Roboto", sans-serif;
+}
+body{
+  font-family: "Kulim Park", sans-serif;
+  background: #F5F5F5;
+}
+
+@mixin apply-map($prefix, $property, $map) {
+  @each $size, $val in $map {
+    .#{$prefix}-#{$size} {
+      #{$property}: $val;
+    }
+  }
+}
+
+$colors: (
+        "royal-blue": #1554A3,
+        "cobalt-blue": #195CB1,
+        "medium-grey": #888888,
+);
+$backgroundColors: (
+        "royal-blue": #1554A3,
+);
+
+@include apply-map("text", "color", $colors);
+@include apply-map("bg", "background-color", $backgroundColors);
+
+$borderRadius: (
+        "20": 20px,
+        "12": 12px,
+        "8": 8px,
+);
+@include apply-map("radius", "border-radius", $borderRadius);
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 10px;
+}
+
+.text-weight-600{
+  font-weight: 600;
+}
+
+.text-subtitle{
+  font-size: 18px;
+}
