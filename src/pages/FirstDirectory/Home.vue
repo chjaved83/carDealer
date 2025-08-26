@@ -29,21 +29,7 @@
       </div>
     </div>
     <div class="bg-primary row q-mt-lg q-py-xl">
-      <div class="col-12 text-center text-white">
-        <div class="text-weight-bold text-h4">
-          Browse by Brand
-        </div>
-        <div class="text-subtitle1">
-          Brand Description
-        </div>
-      </div>
-      <div class="col-12 q-pt-lg">
-        <div class="container row">
-          <div class="col-12 q-mb-xl">
-            <Brands/>
-          </div>
-        </div>
-      </div>
+      <Brands/>
     </div>
 
     <div class="container row q-pb-xl q-px-none">

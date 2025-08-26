@@ -1,38 +1,53 @@
 <template>
-  <Carousel v-bind="config">
-    <Slide v-for="(brand, index) in brands" :key="index" class="q-px-sm">
-      <q-card class="brand-card text-center radius-12" flat bordered>
-        <q-img :src="brand.image" class="q-mt-sm" style="width: 120px; height: 120px;"/>
-        <div class="q-mt-sm text-center text-grey-7 text-subtitle1">{{ brand.name }}</div>
-      </q-card>
-    </Slide>
-    <template #addons>
-      <Navigation>
-        <template #prev>
-          <q-btn
-            dense
-            round
-            flat
-            icon="arrow_back"
-            class="bg-white text-grey-8 shadow-2"
-          />
-        </template>
-        <template #next>
-          <q-btn
-            dense
-            round
-            flat
-            icon="arrow_forward"
-            class="bg-white text-grey-8 shadow-2"
-          />
-        </template>
-      </Navigation>
-      <Pagination/>
-    </template>
-  </Carousel>
+  <div class="col-12 text-center text-white">
+    <div class="text-weight-bold text-h4">
+      Browse by Brand
+    </div>
+    <div class="text-subtitle1">
+      Brand Description
+    </div>
+  </div>
+  <div class="col-12 q-pt-lg">
+    <div class="container row">
+      <div class="col-12 q-mb-xl">
+        <Carousel v-bind="config">
+          <Slide v-for="(brand, index) in brands" :key="index" class="q-px-sm">
+            <q-card class="brand-card text-center radius-12" flat bordered>
+              <q-img :src="brand.image" class="q-mt-sm" style="width: 120px; height: 120px;"/>
+              <div class="q-mt-sm text-center text-grey-7 text-subtitle1">{{ brand.name }}</div>
+            </q-card>
+          </Slide>
+          <template #addons>
+            <Navigation>
+              <template #prev>
+                <q-btn
+                  dense
+                  round
+                  flat
+                  icon="arrow_back"
+                  class="bg-white text-grey-8 shadow-2"
+                />
+              </template>
+              <template #next>
+                <q-btn
+                  dense
+                  round
+                  flat
+                  icon="arrow_forward"
+                  class="bg-white text-grey-8 shadow-2"
+                />
+              </template>
+            </Navigation>
+            <Pagination/>
+          </template>
+        </Carousel>
+      </div>
+    </div>
+  </div>
 </template>
 <script setup>
 import {Carousel, Navigation, Pagination, Slide} from "vue3-carousel";
+import "vue3-carousel/carousel.css";
 import {ref} from "vue";
 
 const brands = ref([

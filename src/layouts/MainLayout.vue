@@ -130,7 +130,7 @@
           >
             Use our search below to find our latest models
           </div>
-          <BannerSearch/>
+          <BannerSearch v-if="route.path === '/home'"/>
         </div>
       </div>
     </q-header>
@@ -146,6 +146,9 @@
 import BannerSearch from "components/BannerSearch.vue";
 import {ref} from "vue";
 import Footer from "components/Footer.vue";
+import {useRoute} from 'vue-router'
+
+const route = useRoute()
 
 const items = [
   {
