@@ -29,7 +29,7 @@
       </div>
 
       <!-- Carousel -->
-      <Carousel v-bind="config" class="q-mt-md q-pb-lg">
+      <Carousel v-bind="config" class="q-mt-md q-pb-xl">
         <Slide
           v-for="(review, index) in reviews"
           :key="index"

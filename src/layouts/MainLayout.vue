@@ -112,7 +112,7 @@
           </q-toolbar>
         </div>
       </div>
-      <div class="banner-section" :class="$q.screen.gt-sm ? 'q-mr--32' : ''">
+      <div class="banner-section" :class="$q.screen.gt.sm ? 'q-mt--32' : ''">
         <div class="container q-pa-lg text-white">
           <div class="q-pt-xl">
             <div
@@ -136,23 +136,16 @@
     </q-header>
 
     <!-- Main Page Container -->
-    <q-page-container>
+    <q-page-container style="padding-bottom: 0;">
       <router-view/>
     </q-page-container>
-    <q-footer class="footer q-py-xl bg-primary opacity-3">
-      <div class="container row">
-        <div class="col-4">
-
-        </div>
-        <div class="col-4"></div>
-        <div class="col-4"></div>
-      </div>
-    </q-footer>
+    <Footer/>
   </q-layout>
 </template>
 <script setup>
 import BannerSearch from "components/BannerSearch.vue";
 import {ref} from "vue";
+import Footer from "components/Footer.vue";
 
 const items = [
   {
@@ -220,8 +213,8 @@ const centerButtons = [
   background-repeat: no-repeat;
 }
 
-.q-mr--32 {
-  margin-left: -32px;
+.q-mt--32 {
+  margin-top: -32px;
 }
 
 :deep(.q-item__label + .q-item__label) {
@@ -234,13 +227,5 @@ const centerButtons = [
 
 .right-btn {
   border-radius: 0 8px 8px 0
-}
-
-.footer {
-  background-image: url('/images/footerCar.jpg')
-}
-
-.opacity-3 {
-  opacity: 0.8;
 }
 </style>
