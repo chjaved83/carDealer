@@ -117,18 +117,26 @@
           <div class="q-pt-xl">
             <div
               class="text-weight-bold"
-              :class="$q.screen.gt.sm ? 'text-h1 q-pt-xl' : 'text-h2'"
+              :class="$q.screen.gt.sm && route.path === '/home' ? 'text-80' : 'text-h2'"
             >
-              <div class="q-pt-lg" :class="$q.screen.lt.md ? '' : 'q-mt-xl'">
-                Find my Car
+              <div :class="route.path === '/home' ? 'q-pt-xl' : ''">
+                <div class="q-pt-lg" :class="$q.screen.lt.md ? '' : 'q-mt-xl'">
+                  <div :class="route.path === '/home' ? 'q-pt-xl' : ''">
+                    {{ route.meta.title }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div
             class="text-h5 text-weight-600 q-pt-md"
-            :class="$q.screen.gt.sm ? 'q-mt-lg' : ''"
+            :class="route.path === '/home' && $q.screen.gt.sm ? 'q-mt-lg' : ''"
           >
-            Use our search below to find our latest models
+            <div :class="route.path === '/home' ? '' : 'q-pb-xl'">
+              <div :class="route.path === '/home' ? '' : 'q-pb-xl'">
+                Use our search below to find our latest models
+              </div>
+            </div>
           </div>
           <BannerSearch v-if="route.path === '/home'"/>
         </div>
@@ -230,5 +238,10 @@ const centerButtons = [
 
 .right-btn {
   border-radius: 0 8px 8px 0
+}
+
+.text-80 {
+  font-size: 80px;
+  line-height: 80px;
 }
 </style>

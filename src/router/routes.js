@@ -10,8 +10,16 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'home', component: () => import('pages/FirstDirectory/Home.vue') },
-      { path: 'car-listings', component: () => import('pages/FirstDirectory/CarListing.vue') }
+      {
+        path: 'home',
+        component: () => import('pages/FirstDirectory/Home.vue'),
+        meta: { title: 'Find my Car' }
+      },
+      {
+        path: 'car-listings',
+        component: () => import('pages/FirstDirectory/CarListing.vue'),
+        meta: { title: 'Car Listing' }
+      }
     ]
   },
 
