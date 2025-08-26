@@ -203,7 +203,7 @@ const centerButtons = [
   },
   {
     label: "About Us",
-    to: "/"
+    to: "/about-us"
   },
   {
     label: "Contact Us",

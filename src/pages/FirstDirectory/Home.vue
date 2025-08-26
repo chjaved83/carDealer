@@ -35,9 +35,7 @@
     <div class="container row q-pb-xl q-px-none">
       <SpecialCarOffers/>
     </div>
-    <div class="bg-white q-py-xl">
       <WelcomeSection/>
-    </div>
     <div>
       <HealthCareSection/>
     </div>

@@ -172,7 +172,7 @@ const footerItems = [
       {
         icon: "img:/icons/expandCircle.svg",
         product: "About Us",
-        to: "/",
+        to: "/about-us",
       },
       {
         icon: "img:/icons/expandCircle.svg",

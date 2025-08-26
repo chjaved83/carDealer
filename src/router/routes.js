@@ -19,7 +19,12 @@ const routes = [
         path: 'car-listings',
         component: () => import('pages/FirstDirectory/CarListing.vue'),
         meta: { title: 'Car Listing' }
-      }
+      },
+      {
+        path: 'about-us',
+        component: () => import('pages/FirstDirectory/AboutUs.vue'),
+        meta: { title: 'About Us' }
+      },
     ]
   },
 
