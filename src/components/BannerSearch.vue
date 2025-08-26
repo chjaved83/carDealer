@@ -107,7 +107,10 @@
       </div>
 
       <!-- Search Button -->
-      <div class="col-12 col-sm-6 col-md-2 flex justify-end">
+      <div
+        class="col-12 col-sm-6 col-md-2"
+        :class="!$q.screen.xs ? 'justify-end flex' : 'text-center'"
+      >
         <q-btn
           no-caps
           color="primary"

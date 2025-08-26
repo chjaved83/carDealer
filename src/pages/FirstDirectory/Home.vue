@@ -52,17 +52,23 @@
     <div class="bg-white q-py-xl">
       <WelcomeSection/>
     </div>
-
+    <div>
+      <HealthCareSection/>
+    </div>
+    <div>
+      <PeopleTrust/>
+    </div>
   </q-page>
 </template>
 <script setup>
-import BannerSearch from "components/BannerSearch.vue";
+import "vue3-carousel/carousel.css";
 import Brands from "components/Home/Brands.vue";
 import PrimaryButton from "components/PrimaryButton.vue";
 import SpecialCars from "components/Home/SpecialCars.vue";
 import SpecialCarOffers from "components/Home/SpecialCarOffers.vue";
-import "vue3-carousel/carousel.css";
 import WelcomeSection from "components/Home/WelcomeSection.vue";
+import HealthCareSection from "components/Home/HealthCareSection.vue";
+import PeopleTrust from "components/Home/PeopleTrust.vue";
 
 </script>
 <style scoped>

@@ -22,8 +22,8 @@
                 Car Dealer
               </q-item-label>
               <q-item-label
-                class="text-grey-7 q-pl-md text-weight-med text-h6"
-                :class="$q.screen.lt.md ? 'text-subtitle1' : 'text-h6'"
+                class="text-grey-7 text-weight-med text-h6"
+                :class="$q.screen.lt.md ? 'text-subtitle1' : 'text-h6 q-pl-md'"
                 style="letter-spacing: 4px"
               >
                 AUTOMOTIVE
@@ -53,10 +53,29 @@
             color="primary"
             class="lt-md"
             size="xl"
-          />
+          >
+            <q-menu class="full-width bg-primary radius-8 lt-md text-white">
+              <q-list class="q-pa-xs">
+                <div
+                  v-for="(item, index) in centerButtons"
+                  :key="index"
+                  :class="item.smallScreen ? 'lt-md' : ''"
+                >
+                  <q-btn
+                    flat
+                    no-caps
+                    class="text-subtitle1 text-weight-medium"
+                    :class="item.btnClass"
+                    :label="item.label"
+                    :to="item.to"
+                  />
+                </div>
+              </q-list>
+            </q-menu>
+          </q-btn>
         </div>
 
-        <div class="col-12 bg-primary radius-12 q-mt-lg">
+        <div class="col-12 bg-primary radius-12 q-mt-lg gt-sm">
           <q-toolbar class="q-pa-none">
 
             <!-- Left Icon -->
@@ -72,7 +91,7 @@
               <q-btn
                 v-for="button in centerButtons"
                 flat
-                :class="$q.screen.lt.lg ? 'text-subtitle' : 'text-h6'"
+                :class="[$q.screen.lt.lg ? 'text-subtitle' : 'text-h6', button.smallScreen ? 'lt-md' : '']"
                 class=" text-weight-600"
                 :label="button.label"
                 :to="button.to"
@@ -93,7 +112,7 @@
           </q-toolbar>
         </div>
       </div>
-      <div class="banner-section">
+      <div class="banner-section" :class="$q.screen.gt-sm ? 'q-mr--32' : ''">
         <div class="container q-pa-lg text-white">
           <div class="q-pt-xl">
             <div
@@ -120,10 +139,20 @@
     <q-page-container>
       <router-view/>
     </q-page-container>
+    <q-footer class="footer q-py-xl bg-primary opacity-3">
+      <div class="container row">
+        <div class="col-4">
+
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+      </div>
+    </q-footer>
   </q-layout>
 </template>
 <script setup>
 import BannerSearch from "components/BannerSearch.vue";
+import {ref} from "vue";
 
 const items = [
   {
@@ -144,7 +173,12 @@ const items = [
 ];
 const centerButtons = [
   {
-    label: "BUY A CAR",
+    label: "Home",
+    to: "/home",
+    smallScreen: true
+  },
+  {
+    label: "Buy a Car",
     to: "/"
   },
   {
@@ -171,6 +205,11 @@ const centerButtons = [
     label: "Contact Us",
     to: "/"
   },
+  {
+    label: "Get Help",
+    to: "/",
+    smallScreen: true
+  },
 ]
 </script>
 <style scoped>
@@ -179,7 +218,10 @@ const centerButtons = [
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: -32px;
+}
+
+.q-mr--32 {
+  margin-left: -32px;
 }
 
 :deep(.q-item__label + .q-item__label) {
@@ -192,5 +234,13 @@ const centerButtons = [
 
 .right-btn {
   border-radius: 0 8px 8px 0
+}
+
+.footer {
+  background-image: url('/images/footerCar.jpg')
+}
+
+.opacity-3 {
+  opacity: 0.8;
 }
 </style>
