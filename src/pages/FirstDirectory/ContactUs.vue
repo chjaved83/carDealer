@@ -27,10 +27,7 @@
                         :class="[input.colClass, $q.screen.gt.sm ? input.lgClass : '']"
                         v-for="(input, index) in inputFields" :key="index"
                       >
-                        <div
-
-                          class="text-h6 text-weight-600 q-mt-md text-dark-grey"
-                        >
+                        <div class="text-h6 text-weight-600 q-mt-md text-dark-grey">
                           {{ input.label }}
                         </div>
                         <q-input
@@ -93,6 +90,10 @@
             </div>
           </div>
         </div>
+
+        <div class="col-12">
+          <BrandPartner :brandingImg="false"/>
+        </div>
       </div>
     </div>
   </q-page>
@@ -100,6 +101,7 @@
 <script setup>
 import {ref} from "vue";
 import {useQuasar} from "quasar";
+import BrandPartner from "components/BrandPartner.vue";
 
 const $q = useQuasar();
 const btnLoading = ref(false)

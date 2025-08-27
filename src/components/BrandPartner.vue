@@ -44,6 +44,7 @@
       </div>
     </div>
     <div
+      v-if="brandingImg"
       class="col-12 q-mb-xl q-mt-lg"
       :class="$q.screen.lt.md ? 'q-pb-lg' : 'q-pb-md'"
     >
@@ -52,6 +53,12 @@
   </div>
 </template>
 <script setup>
+defineProps({
+  brandingImg: {
+    default: true,
+    type: Boolean
+  }
+})
 import {Carousel, Navigation, Pagination, Slide} from "vue3-carousel";
 import "vue3-carousel/carousel.css";
 import {ref} from "vue";
@@ -81,7 +88,7 @@ const config = {
     320: {itemsToShow: 2, snapAlign: "start"},
     600: {itemsToShow: 3, snapAlign: "start"},
     768: {itemsToShow: 4, snapAlign: "start"},
-    1000: {itemsToShow: 5, snapAlign: "start"},
+    1000: {itemsToShow: 6, snapAlign: "start"},
     1400: {itemsToShow: 6, snapAlign: "start"},
   },
 };
