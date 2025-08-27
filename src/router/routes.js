@@ -25,6 +25,11 @@ const routes = [
         component: () => import('pages/FirstDirectory/AboutUs.vue'),
         meta: { title: 'About Us' }
       },
+      {
+        path: 'contact-us',
+        component: () => import('pages/FirstDirectory/ContactUs.vue'),
+        meta: { title: 'Contact Us' }
+      },
     ]
   },
 

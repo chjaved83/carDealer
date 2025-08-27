@@ -182,7 +182,7 @@ const footerItems = [
       {
         icon: "img:/icons/expandCircle.svg",
         product: "Contact Us",
-        to: "/",
+        to: "/contact-us",
       },
       {
         icon: "img:/icons/expandCircle.svg",

@@ -109,8 +109,4 @@ defineProps({
   pointer-events: none;
 }
 
-.text-28 {
-  font-size: 28px;
-  line-height: 34px;
-}
 </style>
