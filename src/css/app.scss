@@ -26,6 +26,7 @@ $colors: (
 );
 $backgroundColors: (
         "royal-blue": #1554A3,
+        "dark-navy": #012543,
 );
 
 @include apply-map("text", "color", $colors);
@@ -33,6 +34,7 @@ $backgroundColors: (
 
 $borderRadius: (
         "20": 20px,
+        "25": 25px,
         "10": 10px,
         "12": 12px,
         "8": 8px,
