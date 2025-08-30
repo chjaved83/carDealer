@@ -1,6 +1,57 @@
 <template>
   <q-footer class="footer">
-    <div class="" :class="$q.screen.gt.sm ? 'q-mt-lg q-py-xl' : 'q-pb-sm q-pt-xl'">
+    <q-card v-if="talkSection" flat class="text-h2 bg-blue-6 container radius-20 "
+            :class="$q.screen.lt.md ? 'top--20' : 'top--93'"
+            style="">
+      <div :class="[$q.screen.xs ? 'q-py-lg' : 'q-pa-xl ', $q.screen.gt.sm ? 'q-mt-96' : '']" style="">
+        <q-item class="q-py-none">
+          <q-item-section>
+            <q-item-label class="text-h4 text-weight-600">
+              Check Your Finance Eligibility
+            </q-item-label>
+            <q-item-label class="text-h6 ">
+              <div class="row">
+                <div class="col-12 col-md-11 col-lg-10">
+                  Enjoy a hassle-free car financing experience with our expert team! We work closely with
+                  all major banks across the UAE to secure the best auto loan options for you.
+                </div>
+              </div>
+            </q-item-label>
+          </q-item-section>
+          <q-item-section side class="gt-sm">
+            <q-item class="bg-primary text-white q-py-md radius-10">
+              <q-item-section avatar class="q-pr-none">
+                <q-icon size="50px" name="img:/icons/callWhite.svg"/>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label class="text-subtitle text-weight-bold">
+                  TALK TO AN EXPERT FREE
+                </q-item-label>
+                <q-item-label class="q-mt-none text-h5 text-weight-bold">
+                  +971 56 526 0000
+                </q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-item-section>
+        </q-item>
+        <q-item class="bg-primary text-white q-py-md radius-10 q-mx-auto q-mt-lg lt-md" style="width: 294px">
+          <q-item-section avatar class="q-pr-none">
+            <q-icon size="50px" name="img:/icons/callWhite.svg"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label class="text-subtitle text-weight-bold">
+              TALK TO AN EXPERT FREE
+            </q-item-label>
+            <q-item-label class="q-mt-none text-h5 text-weight-bold">
+              +971 56 526 0000
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+      </div>
+    </q-card>
+
+    <div class=""
+         :class="[$q.screen.gt.sm ? 'q-pb-xl' : 'q-pb-sm q-pt-xl', $q.screen.gt.sm && !talkSection ? 'q-mt-lg q-pt-xl' : '' ]">
       <div class="container row">
         <div class="col-12 col-md-4" :class="$q.screen.lt.md ? 'q-mb-md' : ''">
           <q-item>
@@ -105,6 +156,12 @@
   </q-footer>
 </template>
 <script setup>
+
+import {ref, watch} from "vue";
+import {useRoute} from 'vue-router'
+
+const route = useRoute()
+const talkSection = ref(false)
 const footerItems = [
   {
     title: "Car Partner ",
@@ -197,7 +254,6 @@ const footerItems = [
     ]
   }
 ]
-
 const contactItems = [
   {
     name: "img:/icons/footerWhatsapp.svg",
@@ -222,6 +278,13 @@ const contactItems = [
     val1: "Speedex Center - 1 - Dubai Investment Park - Dubai - United Arab Emirates",
   },
 ]
+
+watch(
+  () => route.path,
+  (newPath) => {
+    talkSection.value = newPath === '/contact-us'
+  }
+)
 </script>
 <style scoped>
 .footer {
@@ -243,4 +306,15 @@ const contactItems = [
   z-index: 1;
 }
 
+.top--93 {
+  top: -93px
+}
+
+.top--20 {
+  top: -20px;
+}
+
+.q-mt-96 {
+  margin-top: 96px;
+}
 </style>
