@@ -41,6 +41,7 @@ $borderRadius: (
         "10": 10px,
         "12": 12px,
         "8": 8px,
+        "6": 6px,
 );
 @include apply-map("radius", "border-radius", $borderRadius);
 

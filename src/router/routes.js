@@ -21,6 +21,11 @@ const routes = [
         meta: { title: 'Car Listing' }
       },
       {
+        path: 'car-detail',
+        component: () => import('pages/FirstDirectory/CarDetail.vue'),
+        meta: { title: 'Car Detail' }
+      },
+      {
         path: 'about-us',
         component: () => import('pages/FirstDirectory/AboutUs.vue'),
         meta: { title: 'About Us' }
