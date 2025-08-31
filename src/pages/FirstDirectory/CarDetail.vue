@@ -385,6 +385,33 @@
         </div>
       </div>
     </div>
+    <div class="bg-primary row q-mt-lg q-py-xl q-mb-xl">
+      <div class="col-12 q-mb-xl">
+        <div class="q-py-lg">
+          <Brands/>
+        </div>
+      </div>
+    </div>
+    <div class="container row q-pb-xl" :class="$q.screen.lt.md ? 'q-px-md' : ''">
+      <div class="col-12 flex justify-between items-center">
+        <div class="text-h4 text-weight-bold">Similar Cars</div>
+        <div class="">
+          <PrimaryButton
+            label="View All Cars"
+            padding="12px 24px"
+            @click=""
+          />
+        </div>
+      </div>
+      <div class="col-12">
+        <q-separator color="grey-4" class="q-mt-md"/>
+      </div>
+      <div class="col-12 q-mt-lg q-mb-xl">
+        <SpecialCars/>
+      </div>
+    </div>
+
+
   </q-page>
 </template>
 <script setup>
@@ -392,12 +419,14 @@ import BannerSection from "components/BannerSection.vue";
 import HeaderSection from "components/HeaderSection.vue";
 import {useRoute} from 'vue-router';
 
-
 const route = useRoute()
 const carName = 'Car Name Here'
 import 'vue3-carousel/dist/carousel.css'
-import {Carousel, Navigation, Slide} from "vue3-carousel";
+import {Carousel, Slide} from "vue3-carousel";
 import {computed, reactive, ref} from "vue";
+import Brands from "components/Home/Brands.vue";
+import PrimaryButton from "components/PrimaryButton.vue";
+import SpecialCars from "components/Home/SpecialCars.vue";
 
 const carPrice = ref(179000)
 const interiorCondition = ref(0.9)

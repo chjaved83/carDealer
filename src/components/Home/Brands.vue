@@ -9,7 +9,7 @@
   </div>
   <div class="col-12 q-pt-lg">
     <div class="container row">
-      <div class="col-12 q-mb-xl">
+      <div class="col-12 ">
         <Carousel v-bind="config">
           <Slide v-for="(brand, index) in brands" :key="index" class="q-px-sm">
             <q-card class="brand-card text-center radius-12" flat bordered>
