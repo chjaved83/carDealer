@@ -1,123 +1,50 @@
 <template>
-  <q-page class="">
-
-    <q-header class="bg-white ">
-
+  <q-page>
+    <q-header class="bg-white">
       <HeaderSection :carName="carName"/>
       <BannerSection/>
     </q-header>
-    <div class="container row "
-         :class="$q.screen.gt.sm ? 'q-pt-590 q-col-gutter-lg' : 'q-pt-390'"
+    <div
+      class="container row"
+      :class="$q.screen.gt.sm ? 'q-pt-590 q-col-gutter-lg' : 'q-pt-390'"
     >
       <div class="col-12 col-md-8">
-        <!--          <Carousel v-bind="config" >-->
-        <!--            <Slide-->
-        <!--              v-for="(image, index) in images"-->
-        <!--              :key="index"-->
-        <!--              class="q-px-sm"-->
-        <!--            >-->
-        <!--              <q-card-->
-        <!--                class="brand-card text-center radius-12 cursor-pointer"-->
-        <!--                flat-->
-        <!--                bordered-->
-        <!--                @click="openGallery(index)"-->
-        <!--              >-->
-        <!--                <q-img-->
-        <!--                  :src="image.image"-->
-        <!--                  class="q-mt-sm full-width"-->
-        <!--                />-->
-        <!--              </q-card>-->
-        <!--            </Slide>-->
-
-        <!--            &lt;!&ndash; Navigation buttons &ndash;&gt;-->
-        <!--            <template #addons>-->
-        <!--              <Navigation>-->
-        <!--                <template #prev>-->
-        <!--                  <q-btn-->
-        <!--                    dense-->
-        <!--                    round-->
-        <!--                    flat-->
-        <!--                    icon="arrow_back"-->
-        <!--                    class="bg-primary text-white shadow-2"-->
-        <!--                  />-->
-        <!--                </template>-->
-        <!--                <template #next>-->
-        <!--                  <q-btn-->
-        <!--                    dense-->
-        <!--                    round-->
-        <!--                    flat-->
-        <!--                    icon="arrow_forward"-->
-        <!--                    class="bg-primary text-white shadow-2"-->
-        <!--                  />-->
-        <!--                </template>-->
-        <!--              </Navigation>-->
-        <!--            </template>-->
-        <!--          </Carousel>-->
-        <!--          <q-dialog v-model="showGallery" maximized>-->
-        <!--            <q-carousel-->
-        <!--              v-model="currentIndex"-->
-        <!--              arrows-->
-        <!--              swipeable-->
-        <!--              animated-->
-        <!--              thumbnails-->
-        <!--              infinite-->
-        <!--              class="bg-black text-white thumbnails-horizontal"-->
-        <!--            >-->
-        <!--              <q-carousel-slide-->
-        <!--                v-for="(img, i) in images"-->
-        <!--                :key="i"-->
-        <!--                :name="i"-->
-        <!--                :img-src="img.image"-->
-        <!--              />-->
-        <!--            </q-carousel>-->
-        <!--          </q-dialog>-->
-        <!-- Main carousel -->
-
-        <Carousel v-bind="config">
-          <Slide
-            v-for="(image, index) in images"
-            :key="index"
-            class="q-px-sm"
-          >
-            <q-card
-              class="brand-card text-center radius-12 cursor-pointer"
-              flat
-              bordered
+        <Carousel ref="carousel" v-bind="bannerConfig" v-model="currentIndex">
+          <Slide v-for="(image, index) in images" :key="index">
+            <q-img
+              :src="image.image"
+              class="carousel-image"
               @click="openGallery(index)"
             >
-              <img :src="image.image" alt="">
-              <q-img
-                :src="image.image"
-                class="q-mt-sm full-width full-height"
+              <q-btn
+                dense
+                class="absolute-bottom-left q-ml-md q-mb-md bg-white"
+                icon="img:/icons/fullScreen.svg"
               />
-            </q-card>
+            </q-img>
           </Slide>
         </Carousel>
 
-        <!-- Navigation placed below carousel -->
-        <Navigation>
-          <q-card flat bordered class="q-mt-md q-pa-sm flex justify-center items-center gap-x-4">
-            <q-btn
-              dense
-              round
-              flat
-              icon="arrow_back"
-              class="bg-primary text-white shadow-2"
-              @click="$refs.carousel.prev()"
-            />
-            <q-btn
-              dense
-              round
-              flat
-              icon="arrow_forward"
-              class="bg-primary text-white shadow-2"
-              @click="$refs.carousel.next()"
-            />
-          </q-card>
+        <!-- Thumbnails Navigation -->
+        <div class="row q-mt-md flex items-center justify-center">
+          <div class="col-12">
+            <Carousel v-bind="thumbsConfig" v-model="currentIndex">
+              <Slide v-for="(image, index) in images" :key="index">
+                <q-img
+                  :src="image.image"
+                  :class="[
+                    'cursor-pointer radius-8',
+                    currentIndex === index ? 'active-thumb' : 'inactive-thumb'
+                  ]"
+                  style="width: 100px; height: 80px; object-fit: cover;"
+                  @click="currentIndex = index"
+                />
+              </Slide>
+            </Carousel>
+          </div>
+        </div>
 
-        </Navigation>
-
-        <!-- Gallery Dialog -->
+        <!-- Fullscreen Gallery Dialog -->
         <q-dialog v-model="showGallery" maximized>
           <q-carousel
             v-model="currentIndex"
@@ -133,7 +60,15 @@
               :key="i"
               :name="i"
               :img-src="img.image"
-            />
+            >
+              <q-btn
+                flat
+                dense
+                class="bg-white absolute-top-right q-mr-md q-mt-md text-black"
+                icon="close"
+                @click="showGallery = false"
+              />
+            </q-carousel-slide>
           </q-carousel>
         </q-dialog>
 
@@ -448,7 +383,6 @@
             <q-img src="/images/sell-your-car.jpg"/>
           </div>
         </div>
-
       </div>
     </div>
   </q-page>
@@ -564,42 +498,49 @@ const includes = reactive([
     heading: "Service Contract"
   },
 ])
-
 const images = ref([
   {image: "/images/cars/car.jpg"},
+  {image: "/images/cars/car2.jpg"},
   {image: "/images/cars/car.jpg"},
+  {image: "/images/cars/car2.jpg"},
   {image: "/images/cars/car.jpg"},
+  {image: "/images/cars/car2.jpg"},
   {image: "/images/cars/car.jpg"},
+  {image: "/images/cars/car2.jpg"},
   {image: "/images/cars/car.jpg"},
+  {image: "/images/cars/car2.jpg"},
   {image: "/images/cars/car.jpg"},
+  {image: "/images/cars/car2.jpg"},
 ]);
 
-
-const config = {
-  itemsToShow: 3,
+const bannerConfig = {
+  itemsToShow: 1,
+  snapAlign: "center",
   wrapAround: true,
+};
+
+const thumbsConfig = {
+  itemsToShow: 3,
   gap: 20,
   transition: 500,
-  snapAlign: "center",
-  pauseAutoplayOnHover: true,
+  snapAlign: "left",
   mouseDrag: true,
   touchDrag: true,
   breakpoints: {
     1024: {
-      itemsToShow: 3,
+      itemsToShow: 7,
     },
     608: {
-      itemsToShow: 2,
+      itemsToShow: 6,
     },
     280: {
-      itemsToShow: 1,
+      itemsToShow: 4,
     },
   },
 };
 
-// gallery dialog
-const showGallery = ref(false);
 const currentIndex = ref(0);
+const showGallery = ref(false);
 
 function openGallery(index) {
   currentIndex.value = index;
@@ -607,6 +548,20 @@ function openGallery(index) {
 }
 </script>
 <style scoped>
+.active-thumb {
+  border: 2px solid #1e3a8a;
+  border-radius: 8px;
+}
+
+.inactive-thumb {
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.inactive-thumb:hover {
+  opacity: 1;
+}
+
 .included {
   border: 1px solid #D2D2D2;
   background: #F2F2F2;
@@ -653,5 +608,12 @@ function openGallery(index) {
 
 .account-settings {
   border-bottom: 1px solid #B4B4B4
+}
+
+.carousel-image {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
 }
 </style>
